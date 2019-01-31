@@ -82,8 +82,17 @@
         <!-- constructor arg injection example -->
         <constructor-arg ref="lizhebuglistService"/>
     </bean>
+    
 
     <bean id="lizhebuglistService" class="name.lizhe.service.impl.DefaultLizhebuglistService">
+        <!-- setter injection example -->
+        <property name="lizhebuglistDao" ref="lizhebuglistDao"/>
+        <property name="modelService" ref="modelService"/>
+        <property name="mediaService" ref="mediaService"/>
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+    
+    <bean id="lizhebuglistDao" class="name.lizhe.dao.impl.LizhebuglistDaoImpl">
         <!-- setter injection example -->
         <property name="modelService" ref="modelService"/>
         <property name="mediaService" ref="mediaService"/>

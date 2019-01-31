@@ -29,6 +29,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Required;
 
+import name.lizhe.dao.LizhebuglistDao;
 import name.lizhe.model.LizheBugItemModel;
 import name.lizhe.service.LizhebuglistService;
 
@@ -40,6 +41,8 @@ public class DefaultLizhebuglistService implements LizhebuglistService
 	private MediaService mediaService;
 	private ModelService modelService;
 	private FlexibleSearchService flexibleSearchService;
+	
+	private LizhebuglistDao lizhebuglistDao;
 
 	@Override
 	public String getHybrisLogoUrl(final String logoCode)
@@ -106,13 +109,17 @@ public class DefaultLizhebuglistService implements LizhebuglistService
 	{
 		this.flexibleSearchService = flexibleSearchService;
 	}
+	
+	@Required
+	public void setLizhebuglistDao(final LizhebuglistDao lizhebuglistDao)
+	{
+		this.lizhebuglistDao = lizhebuglistDao;
+	}
 
 	@Override
 	public List<LizheBugItemModel> getBugList()
 	{	
-		final String query = "SELECT {" + LizheBugItemModel.PK + "} FROM {" + LizheBugItemModel._TYPECODE + "}";
-		List<LizheBugItemModel> list = flexibleSearchService.<LizheBugItemModel> search(query).getResult();
-		return list;
+		return lizhebuglistDao.getBugList();
 	}
 
 	@Override
@@ -125,7 +132,7 @@ public class DefaultLizhebuglistService implements LizhebuglistService
 		itemModel.setBugcomments(bugcomments);
 		try
 		{
-			modelService.save(itemModel);
+			lizhebuglistDao.createBug(itemModel);
 		}
 		catch (final Exception e)
 		{
@@ -137,9 +144,6 @@ public class DefaultLizhebuglistService implements LizhebuglistService
 	@Override
 	public void deleteBug(String bugnumber)
 	{
-		final String query = "SELECT {" + LizheBugItemModel.PK + "} FROM {" + LizheBugItemModel._TYPECODE + "} "
-				+ "where {" + LizheBugItemModel.BUGNUMBER+"} ="+bugnumber;
-		List<LizheBugItemModel> list = flexibleSearchService.<LizheBugItemModel> search(query).getResult();
-		modelService.removeAll(list);
+		lizhebuglistDao.deleteBug(bugnumber);
 	}
 }

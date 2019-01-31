@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Jan 30, 2019 5:51:47 PM                     ---
+ * --- Generated at Jan 31, 2019 3:50:17 PM                     ---
  * ----------------------------------------------------------------
  */
 package name.lizhe.constants;
