@@ -11,6 +11,7 @@
 package name.lizhe.service.impl;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 import static name.lizhe.constants.LizhebuglistConstants.PLATFORM_LOGO_CODE;
 
 import de.hybris.bootstrap.annotations.IntegrationTest;
@@ -23,6 +24,8 @@ import javax.annotation.Resource;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import name.lizhe.dao.LizhebuglistDao;
 import name.lizhe.service.LizhebuglistService;
 import name.lizhe.service.impl.DefaultLizhebuglistService;
 
@@ -41,13 +44,13 @@ public class DefaultLizhebuglistServiceIntegrationTest extends ServicelayerBaseT
 	@Resource
 	private FlexibleSearchService flexibleSearchService;
 
-	@Before
+	//@Before
 	public void setUp() throws Exception
 	{
 		lizhebuglistService.createLogo(PLATFORM_LOGO_CODE);
 	}
 
-	@Test
+	//@Test
 	public void shouldReturnProperUrlForLogo() throws Exception
 	{
 		// given
@@ -67,6 +70,11 @@ public class DefaultLizhebuglistServiceIntegrationTest extends ServicelayerBaseT
 		fQuery.addQueryParameter("code", logoCode);
 
 		return flexibleSearchService.searchUnique(fQuery);
+	}
+	
+	@Test
+	public void test() {
+		assertEquals(0, lizhebuglistService.getBugList().size());
 	}
 
 }
