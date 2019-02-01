@@ -14,7 +14,12 @@
 -->
 
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
-
+	<bean class="name.lizhe.data.LizhebugBean">
+		<property name="bugnumber" type="String"/>
+		<property name="bugname" type="String"/>
+		<property name="bugdescription" type="String"/>
+		<property name="bugcomments" type="String"/>
+	</bean>
 	<!--
 		Example Data POJO
 	

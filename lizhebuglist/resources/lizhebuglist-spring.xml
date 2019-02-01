@@ -83,7 +83,11 @@
         <constructor-arg ref="lizhebuglistService"/>
     </bean>
     
-
+    <bean id="lizhebuglistFacade" class="name.lizhe.facade.impl.LizhebuglistFacadeImpl">
+        <!-- setter injection example -->
+        <property name="lizhebuglistService" ref="lizhebuglistService"/>
+    </bean>
+    
     <bean id="lizhebuglistService" class="name.lizhe.service.impl.DefaultLizhebuglistService">
         <!-- setter injection example -->
         <property name="lizhebuglistDao" ref="lizhebuglistDao"/>

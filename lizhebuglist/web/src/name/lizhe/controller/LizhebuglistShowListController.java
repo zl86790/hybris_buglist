@@ -20,6 +20,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import name.lizhe.data.LizhebugBean;
+import name.lizhe.facade.LizhebuglistFacade;
 import name.lizhe.model.LizheBugItemModel;
 //import name.lizhe.model.LizheBugItemModel;
 import name.lizhe.service.LizhebuglistService;
@@ -30,14 +32,25 @@ import name.lizhe.service.LizhebuglistService;
 @Controller
 public class LizhebuglistShowListController
 {
+	
 	@Autowired
-	private LizhebuglistService lizhebuglistService;
+	private LizhebuglistFacade lizhebuglistFacade;
 
 	@RequestMapping(value = "/showlistpage", method = RequestMethod.GET)
 	public String home(final HttpSession session)
 	{
-		final List<LizheBugItemModel> list = lizhebuglistService.getBugList();
+		final List<LizhebugBean> list = lizhebuglistFacade.getBugList();
 		session.setAttribute("buglist", list);
 		return "showlist/showlist";
 	}
+
+	/**
+	 * @param lizhebuglistFacade the lizhebuglistFacade to set
+	 */
+	public void setLizhebuglistFacade(LizhebuglistFacade lizhebuglistFacade)
+	{
+		this.lizhebuglistFacade = lizhebuglistFacade;
+	}
+	
+	
 }
