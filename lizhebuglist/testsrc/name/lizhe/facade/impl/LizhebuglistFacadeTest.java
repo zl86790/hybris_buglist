@@ -12,24 +12,28 @@
 package name.lizhe.facade.impl;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import name.lizhe.facade.LizhebuglistFacade;
 import name.lizhe.service.LizhebuglistService;
 
+import static org.junit.Assert.assertEquals;
+
+import de.hybris.platform.servicelayer.ServicelayerTransactionalTest;
+
+import javax.annotation.Resource;
+
 /**
  *
  */
-public class LizhebuglistFacadeTest
+public class LizhebuglistFacadeTest extends ServicelayerTransactionalTest
 {
-	private LizhebuglistFacade lizhebuglistFacade;
-	private LizhebuglistService lizhebuglistService;
 	
-	@Before
-   public void setUp()
-   {
-		lizhebuglistFacade = new LizhebuglistFacadeImpl();
-
-//		lizhebuglistService = mock(LizhebuglistService.class);
-//		lizhebuglistFacade.setLizhebuglistService(lizhebuglistService);
-   }
+	@Resource
+	private LizhebuglistFacade lizhebuglistFacade;
+	
+	@Test
+	public void lizhebuglistFacadeTest() {
+		assertEquals(0,lizhebuglistFacade.getBugList().size());
+	}
 }
