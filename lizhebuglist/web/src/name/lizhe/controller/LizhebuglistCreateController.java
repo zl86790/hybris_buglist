@@ -18,6 +18,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import name.lizhe.data.LizhebugBean;
+import name.lizhe.facade.LizhebuglistFacade;
 import name.lizhe.service.LizhebuglistService;
 
 /**
@@ -28,6 +30,17 @@ public class LizhebuglistCreateController
 {
 	@Autowired
 	private LizhebuglistService lizhebuglistService;
+	
+	@Autowired
+	private LizhebuglistFacade lizhebuglistFacade;
+	
+	/**
+	 * @param lizhebuglistFacade the lizhebuglistFacade to set
+	 */
+	public void setLizhebuglistFacade(LizhebuglistFacade lizhebuglistFacade)
+	{
+		this.lizhebuglistFacade = lizhebuglistFacade;
+	}
 
 	@RequestMapping(value = "/createpage", method = RequestMethod.GET)
 	public String createpage(final HttpServletRequest request)
@@ -42,7 +55,15 @@ public class LizhebuglistCreateController
 		String bugname = request.getParameter("bugname");
 		String bugdescription = request.getParameter("bugdescription");
 		String bugcomments = request.getParameter("bugcomments");
-		lizhebuglistService.createBug(bugnumber,bugname,bugdescription,bugcomments);
+		
+		LizhebugBean bean = new LizhebugBean();
+		bean.setBugnumber(bugnumber);
+		bean.setBugname(bugname);
+		bean.setBugdescription(bugdescription);
+		bean.setBugcomments(bugcomments);
+		
+		
+		lizhebuglistFacade.createBug(bean);
 		return "redirect:/showlistpage";
 	}
 }

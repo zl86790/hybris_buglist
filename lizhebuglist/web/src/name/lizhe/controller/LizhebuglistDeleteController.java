@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import name.lizhe.facade.LizhebuglistFacade;
 import name.lizhe.service.LizhebuglistService;
 
 /**
@@ -26,14 +27,23 @@ import name.lizhe.service.LizhebuglistService;
 @Controller
 public class LizhebuglistDeleteController
 {
+	
 	@Autowired
-	private LizhebuglistService lizhebuglistService;
+	private LizhebuglistFacade lizhebuglistFacade;
+	
+	/**
+	 * @param lizhebuglistFacade the lizhebuglistFacade to set
+	 */
+	public void setLizhebuglistFacade(LizhebuglistFacade lizhebuglistFacade)
+	{
+		this.lizhebuglistFacade = lizhebuglistFacade;
+	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String create(final HttpServletRequest request)
 	{
 		String bugnumber = request.getParameter("bugnumber");
-		lizhebuglistService.deleteBug(bugnumber);
+		lizhebuglistFacade.deleteBug(bugnumber);
 		return "redirect:/showlistpage";
 	}
 }
