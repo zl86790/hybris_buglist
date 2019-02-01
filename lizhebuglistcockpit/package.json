@@ -1,0 +1,9 @@
+{
+	"name": "lizhebuglistcockpit",
+	"version": "1.0.0",
+	"description": "Security scan configuration for Java Script libraries used in lizhebuglistcockpit",
+	"dependencies": {},
+	"devDependencies": {},
+	"author": "SAP SE",
+	"license": "SAP SE"
+}

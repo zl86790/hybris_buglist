@@ -1,0 +1,11 @@
+#Ant properties
+#Wed Jul 04 09:31:35 UTC 2018
+builddate=20180704 0931
+description=lizhebuglistcockpit
+group.id=de.hybris.platform
+module.name=platform-module
+name=lizhebuglistcockpit
+releasedate=20180626 1840
+vendor=hybris
+version=18.08
+version.api=18.08.0
