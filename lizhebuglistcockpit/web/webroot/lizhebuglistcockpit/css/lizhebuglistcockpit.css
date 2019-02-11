@@ -15,3 +15,10 @@ body {
 .loginContainerWindow {
 	background-image: url('../images/login_y_cockpit.png');
 }
+
+.lizhebuglistcockpit {
+	background-image: url('');
+	background-color: white;
+	height:800px;
+	padding:50px;
+}

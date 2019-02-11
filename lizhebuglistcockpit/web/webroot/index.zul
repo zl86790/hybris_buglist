@@ -10,13 +10,33 @@
 	<include src="/cockpit/commonCSA.zul" visible="false"/>
 	<include src="/lizhebuglistcockpit/lizhebuglistcockpitCSA.zul" visible="false"/>
 	
-	<window xmlns="http://www.zkoss.org/2005/zul" 
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-		xmlns:h="http://www.w3.org/1999/xhtml" 
-		xmlns:zk="http://www.zkoss.org/2005/zk"
-		xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd "
-		id="mainWin" mode="embedded" height="100%" sclass="hywin" use="de.hybris.platform.cockpit.components.impl.MainWindow"
-		shadow="false">
+	<div class="lizhebuglistcockpit" style="">
+		<window title="" border="normal">
+		    <grid vflex="1">
+				<columns>
+					<column label="Type" width="150px" />
+					<column label="Content" />
+				</columns>
+				<rows>
+					<row style="padding-top:5px">
+						<label value="bugnumber" width="150px" />
+						<textbox value="" width="150px" />
+					</row>
+					<row style="padding-top:5px">
+						<label value="bugname" width="150px" />
+						<textbox value="" width="150px" />
+					</row>
+					<row style="padding-top:5px">
+						<label value="bugdescription" width="150px" />
+						<textbox value="" width="150px" />
+					</row>
+					<row style="padding-top:5px">
+						<label value="bugcomments" width="150px" />
+						<textbox value="" width="150px" />
+					</row>
+				</rows>
+			</grid>
+		</window>
+	</div>
 	
-	</window>
 </div>
